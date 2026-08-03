@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.0.2
+
+[compare changes](https://github.com/yanuaraditia/purrrify/compare/v2.0.1...v2.0.2)
+
+### 🩹 Fixes
+
+- **nitro:** Inline sanitize-html dependencies ([9cf3612](https://github.com/yanuaraditia/purrrify/commit/9cf3612))
+
+### ❤️ Contributors
+
+- Yanuar ([@yan-ad](https://github.com/yan-ad))
+
 ## v2.0.1
 
 [compare changes](https://github.com/yanuaraditia/purrrify/compare/v2.0.0...v2.0.1)
