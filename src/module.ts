@@ -22,11 +22,19 @@ export default defineNuxtModule<ModuleOptions>({
       }
     }
 
-    // Transpile for SSR build to avoid CJS interop issues
-    // when Nitro bundles the server entry.
+    // Transpile for Vite SSR to avoid CJS interop issues.
     nuxt.options.build.transpile ||= []
     if (!nuxt.options.build.transpile.includes('sanitize-html')) {
       nuxt.options.build.transpile.push('sanitize-html')
+    }
+
+    // Inline sanitize-html in Nitro's production server bundle. Externalizing
+    // it can leave its transitive dependencies (such as escape-string-regexp)
+    // out of .output, causing SSR requests to fail at runtime.
+    nuxt.options.nitro.externals ||= {}
+    nuxt.options.nitro.externals.inline ||= []
+    if (!nuxt.options.nitro.externals.inline.includes('sanitize-html')) {
+      nuxt.options.nitro.externals.inline.push('sanitize-html')
     }
 
     addTypeTemplate({
